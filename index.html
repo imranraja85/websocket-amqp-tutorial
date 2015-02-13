@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Websocket Demo</title>
+    <script src="SimpleSock.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1> Imran's WebSockets + RabbitMQ example </h1>
+  </body>
+
+  <script type="text/javascript">
+    ws = new SimpleSock('ws://localhost:3003');
+    
+    ws.bind('new-user', function(response){
+      alert(response.message + " Welcome " + response.user.name);
+    });
+
+    ws.bind('user-left', function(response){
+      alert(response.message + " Goodbye " + response.user.name);
+    });
+  </script>
+</html>
